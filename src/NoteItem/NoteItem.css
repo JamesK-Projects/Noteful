@@ -1,0 +1,20 @@
+.note-item{
+    border-style: solid;
+    border-width: 1px;
+    margin: 10px;
+    padding-left: 20px;
+    display: flex;
+}
+
+.delete-note{
+    margin: 30px;
+
+}
+
+.left-side{
+    flex: 4;
+}
+
+.right-side{
+    flex: 1;
+}
