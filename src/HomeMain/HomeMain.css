@@ -1,0 +1,12 @@
+.add-note-button{
+    background-color: rgb(215, 244, 252);
+    border-style: solid;
+    border-color: black;
+    border-radius: 5px;
+    border-width: 1px;
+    padding: 10px 20px 10px 20px;
+    margin-left: 10px;
+    font-size: 17px;
+    cursor: pointer;
+    margin-top: 10px;
+}
