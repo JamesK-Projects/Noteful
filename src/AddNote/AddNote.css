@@ -1,0 +1,27 @@
+.add-note-form{
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    margin: 20px 40px 20px 40px;
+    padding: 40px;
+    font-size: 20px;
+    text-align: center;
+    background-color: rgb(215, 244, 252);
+}
+
+input{
+    font-size: 16px;
+    margin-bottom: 15px;
+    margin-top: 0;
+    margin-right: 5px;
+    text-align: center;
+}
+
+.add-note-submit{
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+select{
+    font-size: large;
+}
