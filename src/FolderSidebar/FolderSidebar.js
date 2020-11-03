@@ -37,7 +37,7 @@ class FolderSidebar extends Component {
 }
 
 FolderSidebar.propTypes = {
-    value: PropTypes.object
+    match: PropTypes.object.isRequired
 }
  
 export default FolderSidebar;

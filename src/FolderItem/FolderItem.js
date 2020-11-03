@@ -18,7 +18,8 @@ class FolderItem extends Component {
 }
 
 FolderItem.propTypes = {
-    value: PropTypes.object
+    folder: PropTypes.object.isRequired,
+    isSelected: PropTypes.bool
 }
  
 export default FolderItem;

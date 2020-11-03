@@ -26,7 +26,7 @@ class Error extends Component {
 
 
 Error.propTypes = {
-    value: PropTypes.object
+    children: PropTypes.object.isRequired
 }
  
 export default Error;

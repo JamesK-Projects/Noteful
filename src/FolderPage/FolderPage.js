@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import FolderSidebar from '../FolderSidebar/FolderSidebar';
 import FolderNotes from '../FolderNotes/FolderNotes';
-import PropTypes from 'prop-types';
 
 class FolderPage extends Component {
     render() { 
@@ -18,8 +17,5 @@ class FolderPage extends Component {
     }
 }
 
-FolderPage.propTypes = {
-    value: PropTypes.object
-}
  
 export default FolderPage; 
