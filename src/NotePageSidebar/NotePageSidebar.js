@@ -30,7 +30,7 @@ class NotePageSidebar extends Component {
 
 
 NotePageSidebar.propTypes = {
-    value: PropTypes.object
+    match: PropTypes.object.isRequired
 }
  
 export default NotePageSidebar;

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import NotePageSidebar from '../NotePageSidebar/NotePageSidebar';
 import NotePageMain from '../NotePageMain/NotePageMain';
-import PropTypes from 'prop-types';
 
 
 class NotePage extends Component {
@@ -19,8 +18,5 @@ class NotePage extends Component {
     }
 }
 
-NotePage.propTypes = {
-    value: PropTypes.object
-}
  
 export default NotePage;

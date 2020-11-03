@@ -34,6 +34,7 @@ class NoteItem extends Component {
         })
     }
 
+
     render() { 
         return (
             <Error>
@@ -44,7 +45,7 @@ class NoteItem extends Component {
                                     <Link to={`/note/${this.props.note.id}`}>
                                         <h2>{this.props.note.name}</h2>
                                     </Link>
-                                    <p>Modified on {this.props.note.modified}</p>
+                                    Modified on {this.props.note.modified}
                                 </div>
                                 <button 
                                     className="delete-note right-side"
@@ -66,7 +67,7 @@ class NoteItem extends Component {
 }
 
 NoteItem.propTypes = {
-    value: PropTypes.object
+    note: PropTypes.object.isRequired
 }
  
 export default NoteItem;
