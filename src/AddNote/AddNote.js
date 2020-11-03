@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import NotefulContext from '../NotefulContext';
 import ValidationError from '../ValidationError';
 import Error from '../Error/Error';
-import PropTypes from 'prop-types';
 import './AddNote.css';
 
 class AddNote extends Component {
@@ -42,7 +41,8 @@ class AddNote extends Component {
             body: JSON.stringify({ 
                 name: this.state.name,
                 content: this.state.content,
-                folderId: this.state.folderId
+                folderId: this.state.folderId,
+                modified: new Date()
              })
         })   
         .then(res => {
@@ -117,10 +117,5 @@ class AddNote extends Component {
     }
 }
 
-
-
-AddNote.propTypes = {
-    value: PropTypes.object
-}
  
 export default AddNote;

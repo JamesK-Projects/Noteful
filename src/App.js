@@ -141,7 +141,7 @@ class App extends Component {
 }
 
 App.propTypes = {
-	value: PropTypes.object
+	history: PropTypes.object.isRequired
 };
  
 export default withRouter(App);

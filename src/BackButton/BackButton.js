@@ -20,5 +20,5 @@ export default BackButton;
 
 
 BackButton.propTypes = {
-    value: PropTypes.object
+    history: PropTypes.object.isRequired
 }

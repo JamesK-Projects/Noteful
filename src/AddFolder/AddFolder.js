@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import NotefulContext from '../NotefulContext';
 import Error from '../Error/Error';
-import PropTypes from 'prop-types';
 import './AddFolder.css';
 
 class AddFolder extends Component {
@@ -52,7 +51,12 @@ class AddFolder extends Component {
         event.preventDefault();
         const { folder } = this.state;
         console.log('Folder: ', folder.value)
-        this.addFolderRequest(folder);
+        if(this.state.folder.value){
+            this.addFolderRequest(folder);    
+        } else {
+            window.alert('Please enter a name for your new folder')
+        }
+        
     }
 
     render() { 
@@ -80,10 +84,5 @@ class AddFolder extends Component {
     }
 }
 
-
-
-AddFolder.propTypes = {
-    value: PropTypes.object
-}
  
 export default AddFolder;
