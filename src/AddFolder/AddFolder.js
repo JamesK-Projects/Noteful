@@ -61,7 +61,7 @@ class AddFolder extends Component {
 
     render() { 
         return (
-            <Error>
+            // <Error>
                 <NotefulContext.Consumer>
                     {(context) => (
                         <form 
@@ -79,7 +79,7 @@ class AddFolder extends Component {
                         </form>
                     )}
                 </NotefulContext.Consumer>
-            </Error>
+            // </Error>
         );
     }
 }

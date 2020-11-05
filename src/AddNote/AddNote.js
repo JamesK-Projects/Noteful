@@ -89,7 +89,8 @@ class AddNote extends Component {
     render() { 
         const nameError = this.validateNoteName();
         return (
-            <Error>
+            // <Error>
+            <div>
                 {console.log(this.context)}
                 <form 
                     className="add-note-form"
@@ -112,7 +113,8 @@ class AddNote extends Component {
                     </select><br />
                     <button className="add-note-submit" type="submit">Add Note</button>
                 </form>
-            </Error>
+                </div>
+            // </Error>
         );
     }
 }

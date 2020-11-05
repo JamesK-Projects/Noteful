@@ -109,26 +109,26 @@ class App extends Component {
 							exact path='/'
 							component={HomePage}
 						/>
-					</Error>
-					<Error>
+					{/* </Error>
+					<Error> */}
 						<Route	
 							path='/folder/:folderId'
 							component={FolderPage}
 						/>
-					</Error>
-					<Error>
+					{/* </Error>
+					<Error> */}
 						<Route	
 							path='/note/:noteId'
 							component={NotePage}
 						/>
-					</Error>
-					<Error>
+					{/* </Error>
+					<Error> */}
 						<Route 
 							path='/add-folder'
 							component={AddFolder}
 						/>
-					</Error>
-					<Error>
+					{/* </Error>
+					<Error> */}
 						<Route 
 							path='/add-note'
 							component={AddNote}
