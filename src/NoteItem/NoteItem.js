@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import NotefulContext from '../NotefulContext';
-import Error from '../Error/Error';
 import PropTypes from 'prop-types';
 import './NoteItem.css';
 
@@ -37,31 +36,30 @@ class NoteItem extends Component {
 
     render() { 
         return (
-            <Error>
-                <NotefulContext.Consumer>
-                        {(context) => (
-                            <div className="note-item">
-                                <div className="left-side">
-                                    <Link to={`/note/${this.props.note.id}`}>
-                                        <h2>{this.props.note.name}</h2>
-                                    </Link>
-                                    Modified on {this.props.note.modified}
-                                </div>
-                                <button 
-                                    className="delete-note right-side"
-                                    onClick = {() => {
-                                        this.deleteNoteRequest(
-                                            this.props.note.id,
-                                            context.deleteNote
-                                        )
-                                    }}
-                                >
-                                    Delete Note
-                                </button>
-                            </div>
-                        )}
-                </NotefulContext.Consumer>
-            </Error>
+            <NotefulContext.Consumer>
+                {(context) => (
+                    <div className="note-item">
+                        <div className="left-side">
+                            <Link to={`/note/${this.props.note.id}`}>
+                                <h2>{this.props.note.name}</h2>
+                            </Link>
+                            Modified on {this.props.note.modified}
+                        </div>
+                        <button 
+                            className="delete-note right-side"
+                            onClick = {() => {
+                                this.deleteNoteRequest(
+                                    this.props.note.id,
+                                    context.deleteNote
+                                )
+                            }}
+                        >
+                            Delete Note
+                        </button>
+                    </div>
+                )}
+            </NotefulContext.Consumer>
+
         );
     }
 }

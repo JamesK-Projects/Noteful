@@ -11,8 +11,8 @@ class NotePageMain extends Component {
             this.context.notes.map((note, index) => {
                 if(note.id === this.props.match.params.noteId){
                     return(
-                        <div>
-                            <NoteItem note={note} key={index}/>
+                        <div key={index}>
+                            <NoteItem note={note} />
                             <p className="note-content">{note.content}</p>
                         </div>
                     )

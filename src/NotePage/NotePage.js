@@ -11,7 +11,7 @@ class NotePage extends Component {
                     <NotePageSidebar {...this.props}/>
                 </div>
                 <div className="main">
-                    <NotePageMain {...this.props}/>
+                    <NotePageMain {...this.props} key={this.props.match.params.noteId}/>
                 </div>
             </div>
         );
