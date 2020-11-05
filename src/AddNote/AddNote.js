@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import NotefulContext from '../NotefulContext';
 import ValidationError from '../ValidationError';
-import Error from '../Error/Error';
 import './AddNote.css';
 
 class AddNote extends Component {
@@ -89,7 +88,6 @@ class AddNote extends Component {
     render() { 
         const nameError = this.validateNoteName();
         return (
-            // <Error>
             <div>
                 {console.log(this.context)}
                 <form 
@@ -113,8 +111,7 @@ class AddNote extends Component {
                     </select><br />
                     <button className="add-note-submit" type="submit">Add Note</button>
                 </form>
-                </div>
-            // </Error>
+            </div>
         );
     }
 }

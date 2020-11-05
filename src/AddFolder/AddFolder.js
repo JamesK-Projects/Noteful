@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import NotefulContext from '../NotefulContext';
-import Error from '../Error/Error';
 import './AddFolder.css';
 
 class AddFolder extends Component {
@@ -61,25 +60,23 @@ class AddFolder extends Component {
 
     render() { 
         return (
-            // <Error>
-                <NotefulContext.Consumer>
-                    {(context) => (
-                        <form 
-                            className="add-folder-form" 
-                            onSubmit = {e =>
-                                this.handleSubmit(
-                                    e,
-                                    context.addFolder
-                                ) 
-                            }
-                        >
-                            <label htmlFor="new-folder">Enter new folder name </label><br />
-                            <input type="text" name="new-folder" id="new-folder" onChange={e => this.addFolder(e.target.value)}/>
-                            <button className="add-folder-submit" type="submit" >Add Folder</button>
-                        </form>
-                    )}
-                </NotefulContext.Consumer>
-            // </Error>
+            <NotefulContext.Consumer>
+                {(context) => (
+                    <form 
+                        className="add-folder-form" 
+                        onSubmit = {e =>
+                            this.handleSubmit(
+                                e,
+                                context.addFolder
+                            ) 
+                        }
+                    >
+                        <label htmlFor="new-folder">Enter new folder name </label><br />
+                        <input type="text" name="new-folder" id="new-folder" onChange={e => this.addFolder(e.target.value)}/>
+                        <button className="add-folder-submit" type="submit" >Add Folder</button>
+                    </form>
+                )}
+            </NotefulContext.Consumer>
         );
     }
 }
