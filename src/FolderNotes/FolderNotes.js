@@ -12,7 +12,9 @@ class FolderNotes extends Component {
             <div>
                 <Error>
                     {this.context.notes.map((note, index) => {
-                        if(note.folderId === this.props.match.params.folderId){
+                        console.log(note)
+                        console.log(this.props.match.params)
+                        if(note.folder_id == this.props.match.params.folderId){
                             return(
                                 <NoteItem note={note} key={index} />
                             )

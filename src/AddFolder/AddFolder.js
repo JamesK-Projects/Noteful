@@ -9,17 +9,17 @@ class AddFolder extends Component {
         super(props);
         this.state = {
             folder: {
-                value: ''
+                name: ''
             }
         }
     }
 
     addFolder(folder) {
-        this.setState({folder: {value: folder}})
+        this.setState({folder: {name: folder}})
     }
 
     addFolderRequest = (folderName) => {
-        const url='http://localhost:9090/';
+        const url='http://localhost:8000/api/';
         const urlFolders = url + 'folders';
         const { folder } = this.state;
         fetch(urlFolders, {
@@ -27,7 +27,7 @@ class AddFolder extends Component {
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify({ name: folder.value })
+            body: JSON.stringify({ name: folder.name })
         })   
         .then(res => {
             if(!res.ok) {
@@ -39,6 +39,7 @@ class AddFolder extends Component {
         })
         .then(data => {
             console.log(folderName)
+            console.log(this.context)
             this.context.addFolder(folderName);
         })
         .catch(error => {
@@ -49,8 +50,9 @@ class AddFolder extends Component {
     handleSubmit(event) {
         event.preventDefault();
         const { folder } = this.state;
-        console.log('Folder: ', folder.value)
-        if(this.state.folder.value){
+        
+        if(this.state.folder.name){
+            console.log('Folder: ', folder.name)
             this.addFolderRequest(folder);    
         } else {
             window.alert('Please enter a name for your new folder')

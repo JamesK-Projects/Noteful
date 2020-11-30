@@ -11,7 +11,7 @@ class AddNote extends Component {
         this.state = {
             name: '',
             content: '',
-            folderId: 'b0715efe-ffaf-11e8-8eb2-f2801f1b9fd1'
+            folder_id: '1'
         };
         this.addNoteFolder = this.addNoteFolder.bind(this);
     }
@@ -25,12 +25,12 @@ class AddNote extends Component {
     }
 
     addNoteFolder(event) {
-        this.setState({folderId: event.target.value})
+        this.setState({folder_id: event.target.value})
         console.log(event)
     }
 
     addNoteRequest = (newNote) => {
-        const url='http://localhost:9090/';
+        const url='http://localhost:8000/api/';
         const urlNotes = url + 'notes';
         fetch(urlNotes, {
             method: 'POST',
@@ -40,8 +40,8 @@ class AddNote extends Component {
             body: JSON.stringify({ 
                 name: this.state.name,
                 content: this.state.content,
-                folderId: this.state.folderId,
-                modified: new Date()
+                folder_id: this.state.folder_id,
+                date_created: new Date()
              })
         })   
         .then(res => {
@@ -65,12 +65,12 @@ class AddNote extends Component {
         event.preventDefault();
         const name = this.state.name;
         const content = this.state.content;
-        const folderId = this.state.folderId;
+        const folder_id = this.state.folder_id;
         console.log('Name: ', name);
         console.log('Content: ', content);
-        console.log('Folder: ', folderId);
+        console.log('Folder: ', folder_id);
         if(this.state.name){
-            this.addNoteRequest(name, content, folderId);
+            this.addNoteRequest(name, content, folder_id);
         } else {
             window.alert('Please enter a name for your new note')
         }
@@ -101,8 +101,8 @@ class AddNote extends Component {
                     {<ValidationError message={nameError} />}<br />
                     <label htmlFor="new-note-content">Enter content for new note: </label>
                     <input type="text" name="new-note-content" id="new-note-content" onChange={e => this.addNoteContent(e.target.value)}/><br />
-                    <label htmlFor="new-note=folderId">Select the folder for the note to go into: </label>
-                    <select value={this.state.folderId} onChange={this.addNoteFolder}>
+                    <label htmlFor="new-note-folder_id">Select the folder for the note to go into: </label>
+                    <select value={this.state.folder_id} onChange={this.addNoteFolder}>
                         {this.context.folders.map(f => {
                             return (
                                 <option className="new-note-folder" key={f.id} value={f.id}>{f.name}</option>

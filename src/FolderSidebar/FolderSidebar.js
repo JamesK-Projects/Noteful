@@ -12,7 +12,7 @@ class FolderSidebar extends Component {
             <>
                 <Error>
                     {this.context.folders.map((folder, index) => { 
-                        if(folder.id !== this.props.match.params.folderId){
+                        if(folder.id != this.props.match.params.folderId){
                             return (     
                                     <FolderItem folder={folder} key={index} />
                             )

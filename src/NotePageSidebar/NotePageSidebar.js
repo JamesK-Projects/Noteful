@@ -14,7 +14,7 @@ class NotePageSidebar extends Component {
             return null
         }
         const folder = this.context.folders.filter((folder) => {
-            return folder.id == selectedNote[0].folderId
+            return folder.id == selectedNote[0].folder_id
         })
         console.log(folder)
         return (

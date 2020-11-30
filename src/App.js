@@ -18,17 +18,27 @@ class App extends Component {
 	}
 
 	setNotes = notes => {
+		console.log(notes)
 		this.setState({
 			notes,
 			error: null
-		})
+		},
+		() => {
+			this.props.history.push('/')
+		}
+		)
 	}
 
 	setFolders = folders => {
+		console.log('set folder')
 		this.setState({
 			folders,
 			error: null
-		})
+		},
+		() => {
+			this.props.history.push('/')
+		}
+		)
 	}
 
 	deleteNote = noteId => {
@@ -46,8 +56,8 @@ class App extends Component {
 		)
 	}
 
-	addFolder = () => {
-		const url='http://localhost:9090/';
+	getFolders = () => {
+		const url='http://localhost:8000/api/';
 		const urlFolders = url + 'folders';
 		fetch(urlFolders, {
 			method: 'GET',
@@ -60,11 +70,24 @@ class App extends Component {
 		})
 		.then(this.setFolders)
 		.catch(error => this.setState({error}))
-		this.props.history.push('/')
+		
 	}
 
-	addNote = () => {
-		const url='http://localhost:9090/';
+	addFolder = () => {
+		console.log('addFolder')
+		const newFolders = this.state.folders
+		console.log(newFolders)
+
+		this.setState({
+			folders: newFolders
+		},
+		() => {
+			this.props.history.push('/')
+		})
+	}
+
+	getNotes = () => {
+		const url='http://localhost:8000/api/';
 		const urlNotes = url + 'notes';
 		fetch(urlNotes, {
 			method: 'GET',
@@ -77,12 +100,13 @@ class App extends Component {
 		})
 		.then(this.setNotes)
 		.catch(error => this.setState({error}))
-		this.props.history.push('/')
+		
 	}
 
 	componentDidMount() {
+		this.getFolders()
+		this.getNotes()
 		this.addFolder()
-		this.addNote()
 	}
 
 	render() { 

@@ -7,7 +7,7 @@ import './NoteItem.css';
 class NoteItem extends Component {
     static contextType = NotefulContext;
     deleteNoteRequest = (noteId, cb) => {
-        const url='http://localhost:9090/';
+        const url='http://localhost:8000/api/';
         const urlNotes = url + 'notes/';
         fetch(urlNotes + `${this.props.note.id}`, {
             method: 'DELETE',
@@ -15,14 +15,7 @@ class NoteItem extends Component {
                 'content-type': 'application/json'
             }
         }) 
-        .then(res => {
-            if(!res.ok) {
-                return res.json().then(error => {
-                    throw error
-                })
-            }
-            return res.json()
-        })
+        
         .then(data => {
             console.log(noteId)
             console.log(cb)
@@ -43,7 +36,7 @@ class NoteItem extends Component {
                             <Link to={`/note/${this.props.note.id}`}>
                                 <h2>{this.props.note.name}</h2>
                             </Link>
-                            Modified on {this.props.note.modified}
+                            {/* Modified on {this.props.note.modified} */}
                         </div>
                         <button 
                             className="delete-note right-side"
