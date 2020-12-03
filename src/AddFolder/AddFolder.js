@@ -30,6 +30,7 @@ class AddFolder extends Component {
             body: JSON.stringify({ name: folder.name })
         })   
         .then(res => {
+            console.log('add folder')
             if(!res.ok) {
                 return res.json().then(error => {
                     throw error

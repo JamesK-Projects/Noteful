@@ -73,13 +73,28 @@ class App extends Component {
 		
 	}
 
-	addFolder = () => {
+	addFolder = (newFolder) => {
 		console.log('addFolder')
-		const newFolders = this.state.folders
+		const newFolders = [...this.state.folders]
+		newFolders.push(newFolder)
 		console.log(newFolders)
 
 		this.setState({
 			folders: newFolders
+		},
+		() => {
+			this.props.history.push('/')
+		})
+	}
+
+	addNote = (newNote) => {
+		console.log('addnote')
+		const newNotes = [...this.state.notes]
+		newNotes.push(newNote)
+		console.log(newNotes)
+
+		this.setState({
+			notes: newNotes
 		},
 		() => {
 			this.props.history.push('/')
@@ -106,7 +121,6 @@ class App extends Component {
 	componentDidMount() {
 		this.getFolders()
 		this.getNotes()
-		this.addFolder()
 	}
 
 	render() { 

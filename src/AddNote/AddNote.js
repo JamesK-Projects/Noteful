@@ -54,7 +54,7 @@ class AddNote extends Component {
         })
         .then(data => {
             console.log(newNote)
-            this.context.addNote(newNote);
+            this.context.addNote(data);
         })
         .catch(error => {
             console.error(error)
