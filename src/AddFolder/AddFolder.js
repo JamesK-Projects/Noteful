@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NotefulContext from '../NotefulContext';
+import config from '../config';
 import './AddFolder.css';
 
 class AddFolder extends Component {
@@ -19,8 +20,8 @@ class AddFolder extends Component {
     }
 
     addFolderRequest = (folderName) => {
-        const url='http://localhost:8000/api/';
-        const urlFolders = url + 'folders';
+        const url=config.API_ENDPOINT;
+        const urlFolders = url + 'api/folders';
         const { folder } = this.state;
         fetch(urlFolders, {
             method: 'POST',
@@ -30,7 +31,6 @@ class AddFolder extends Component {
             body: JSON.stringify({ name: folder.name })
         })   
         .then(res => {
-            console.log('add folder')
             if(!res.ok) {
                 return res.json().then(error => {
                     throw error
@@ -39,8 +39,6 @@ class AddFolder extends Component {
             return res.json()
         })
         .then(data => {
-            console.log(folderName)
-            console.log(this.context)
             this.context.addFolder(folderName);
         })
         .catch(error => {
@@ -53,7 +51,6 @@ class AddFolder extends Component {
         const { folder } = this.state;
         
         if(this.state.folder.name){
-            console.log('Folder: ', folder.name)
             this.addFolderRequest(folder);    
         } else {
             window.alert('Please enter a name for your new folder')

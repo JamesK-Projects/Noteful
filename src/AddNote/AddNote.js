@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import NotefulContext from '../NotefulContext';
 import ValidationError from '../ValidationError';
+import config from '../config';
 import './AddNote.css';
 
 class AddNote extends Component {
@@ -26,12 +27,11 @@ class AddNote extends Component {
 
     addNoteFolder(event) {
         this.setState({folder_id: event.target.value})
-        console.log(event)
     }
 
     addNoteRequest = (newNote) => {
-        const url='http://localhost:8000/api/';
-        const urlNotes = url + 'notes';
+        const url=config.API_ENDPOINT;
+        const urlNotes = url + 'api/notes';
         fetch(urlNotes, {
             method: 'POST',
             headers: {
@@ -53,7 +53,6 @@ class AddNote extends Component {
             return res.json()
         })
         .then(data => {
-            console.log(newNote)
             this.context.addNote(data);
         })
         .catch(error => {
@@ -66,9 +65,6 @@ class AddNote extends Component {
         const name = this.state.name;
         const content = this.state.content;
         const folder_id = this.state.folder_id;
-        console.log('Name: ', name);
-        console.log('Content: ', content);
-        console.log('Folder: ', folder_id);
         if(this.state.name){
             this.addNoteRequest(name, content, folder_id);
         } else {
@@ -89,7 +85,6 @@ class AddNote extends Component {
         const nameError = this.validateNoteName();
         return (
             <div>
-                {console.log(this.context)}
                 <form 
                     className="add-note-form"
                     onSubmit = {e => 

@@ -9,6 +9,7 @@ import AddNote from './AddNote/AddNote';
 import Error from './Error/Error';
 import PropTypes from 'prop-types';
 import './App.css';
+import config from './config';
 
 class App extends Component {
 	state={
@@ -18,7 +19,6 @@ class App extends Component {
 	}
 
 	setNotes = notes => {
-		console.log(notes)
 		this.setState({
 			notes,
 			error: null
@@ -30,7 +30,6 @@ class App extends Component {
 	}
 
 	setFolders = folders => {
-		console.log('set folder')
 		this.setState({
 			folders,
 			error: null
@@ -45,8 +44,6 @@ class App extends Component {
 		const newNotes = this.state.notes.filter(n => 
 			n.id != noteId
 		)
-		console.log(noteId)
-		console.log(newNotes)
 		this.setState({
 			notes: newNotes
 		},
@@ -57,8 +54,8 @@ class App extends Component {
 	}
 
 	getFolders = () => {
-		const url='http://localhost:8000/api/';
-		const urlFolders = url + 'folders';
+		const url= config.API_ENDPOINT;
+		const urlFolders = url + 'api/folders';
 		fetch(urlFolders, {
 			method: 'GET',
 		})
@@ -74,10 +71,8 @@ class App extends Component {
 	}
 
 	addFolder = (newFolder) => {
-		console.log('addFolder')
 		const newFolders = [...this.state.folders]
 		newFolders.push(newFolder)
-		console.log(newFolders)
 
 		this.setState({
 			folders: newFolders
@@ -88,10 +83,8 @@ class App extends Component {
 	}
 
 	addNote = (newNote) => {
-		console.log('addnote')
 		const newNotes = [...this.state.notes]
 		newNotes.push(newNote)
-		console.log(newNotes)
 
 		this.setState({
 			notes: newNotes
@@ -102,8 +95,8 @@ class App extends Component {
 	}
 
 	getNotes = () => {
-		const url='http://localhost:8000/api/';
-		const urlNotes = url + 'notes';
+		const url=config.API_ENDPOINT;
+		const urlNotes = url + 'api/notes';
 		fetch(urlNotes, {
 			method: 'GET',
 		})
@@ -124,8 +117,6 @@ class App extends Component {
 	}
 
 	render() { 
-		console.log(this.state)
-		console.log(this.props)
 		const contextValue = {
 			notes: this.state.notes,
 			folders: this.state.folders,
@@ -133,7 +124,6 @@ class App extends Component {
 			addFolder: this.addFolder,
 			addNote: this.addNote 
 		}
-		console.log(contextValue);
 		return (		
 			<div>
 				<NotefulContext.Provider value={contextValue}>

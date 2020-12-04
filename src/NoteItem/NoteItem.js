@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import NotefulContext from '../NotefulContext';
 import PropTypes from 'prop-types';
+import config from '../config';
 import './NoteItem.css';
 
 class NoteItem extends Component {
     static contextType = NotefulContext;
     deleteNoteRequest = (noteId, cb) => {
-        const url='http://localhost:8000/api/';
-        const urlNotes = url + 'notes/';
+        const url=config.API_ENDPOINT;
+        const urlNotes = url + 'api/notes/';
         fetch(urlNotes + `${this.props.note.id}`, {
             method: 'DELETE',
             headers: {
@@ -17,8 +18,6 @@ class NoteItem extends Component {
         }) 
         
         .then(data => {
-            console.log(noteId)
-            console.log(cb)
             cb(noteId)
         })
         .catch(error => {
@@ -36,7 +35,6 @@ class NoteItem extends Component {
                             <Link to={`/note/${this.props.note.id}`}>
                                 <h2>{this.props.note.name}</h2>
                             </Link>
-                            {/* Modified on {this.props.note.modified} */}
                         </div>
                         <button 
                             className="delete-note right-side"
