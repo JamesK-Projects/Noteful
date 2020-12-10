@@ -39,7 +39,7 @@ class AddFolder extends Component {
             return res.json()
         })
         .then(data => {
-            this.context.addFolder(folderName);
+            this.context.addFolder(data);
         })
         .catch(error => {
             console.error(error)
